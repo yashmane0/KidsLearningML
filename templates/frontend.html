@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Image Guessing Game</title>
+    <style>
+        
+        .feedback-animation {
+            
+            font-size: 24px;
+            text-align: center;
+            margin-top: -20px;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes correct-animation {
+            
+            0% {  color: green; transform: scale(1); }
+            100% {  color: green; transform: scale(1.5); }
+        }
+        @keyframes incorrect-animation {
+            0% { color: red; transform: scale(1); }
+            100% { color: red; transform: scale(1.5); }
+        }
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;   
+        }
+   
+        body{
+            background-image:url('https://i2.wp.com/teamkruyt.nl/wp-content/uploads/2016/12/light-blue-background-1.jpg?fit=620%2C350&ssl=1'); 
+            background-size: cover; /* Cover the entire background */
+            background-position: center;
+           
+            height: 130vh;
+            font-family: sans-serif;
+            margin-top: -8%;
+        }
+   
+        .wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            
+        }
+   
+        .quiz{
+           
+            display: grid;
+            grid-template-rows: 60px auto;
+            width: 600px;
+            height: 500px;
+            border-radius: 50px;
+        }
+   
+        .quiz_header{
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+            background-color: #fff;
+            box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+        
+        .quiz_user{
+            text-align: center; 
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding-left: 30px;
+        }
+        
+        .quiz_body{
+            
+            padding: 20px 30px;
+            background-color: rgb(82, 182, 229);
+            
+        }
+        
+        .option_group{ 
+                
+            
+            list-style-type: none;
+            
+        }
+        
+        .option{
+           
+            display: block;
+            width: 300px;
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: 2px solid transparent;
+            transition: 0.4s all;
+        }
+        
+        .option:hover{
+            
+            cursor: pointer;
+            border: 2px solid #341f97;
+            color: #341f97;
+        }
+        
+        .option.active{
+            
+            background-color: #341f97;
+            color: #fff;
+        }
+        
+        /* .btn-nextt{
+            border: none;
+            padding: 15px 35px;
+            background-color: #30d44b;
+            color: #fff;
+            border-radius: 50px;
+            transition: 0.4s all;
+        } */
+        
+        button {
+	        font-size:18px;
+            padding: 0.6em 2em;
+            border: none;
+            outline: none;
+            color: white;
+            background: #111;
+            cursor: pointer;
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        button:before {
+            content: "";
+            background: linear-gradient(
+                90deg,
+                #ff0000,
+                transparent,
+                    transparent,
+                    #ff0000
+                    
+            );
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(8px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing-button 20s linear infinite;
+            transition: opacity 0.3s ease-in-out;
+            border-radius: 10px;
+        }    
+
+        @keyframes glowing-button {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 400% 0;
+            }
+        }
+
+            button:after {  
+            z-index: -1;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #111;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }   
+        
+        .btn-next{
+            border: none;
+            padding: 15px 35px;
+            background-color: #341f97;
+            color: #97ff56;
+            border-radius: 50px;
+            transition: 0.4s all;
+        }
+        
+        .btn-next:hover{
+            cursor: pointer;
+            background-color: greenyellow;
+            color: #000;
+        }
+        
+        .award_icon{
+            display: block;
+            font-size: 300px;
+            color: #fff;
+        }
+        
+        .username, .userpoints{
+            color: #fff;
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .border{
+            height: 500px;
+            width: 500px;
+            display: block;
+            justify-content: center;
+            margin: 0px 400px;
+            border-radius: 10px;
+            top: 100px;
+            border-color: transparent;
+        }
+        
+        
+        /* CSS for styling the image */
+        .question-image {
+            width: 300px;
+            height: auto; 
+            margin-bottom: 10px;
+            margin-top: 10px;
+            border-radius: 10px; 
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="quiz">
+            <div class="quiz_header">
+                <div class="quiz_user">
+                    <h1>Image Guessing Game <span class="name"></span></h1>
+                </div>
+            </div>
+    {% if question_number <= 16 %}
+        <p>Question {{ question_number }} of 16</p>
+    {% else %}
+        <p>Game Over!</p>
+    {% endif %}
+    <div class="quiz_body">
+        <!--Display the random image-->
+       <img src="{{ url_for('static', filename='examds/' + image_to_show) }}" alt="Random Image" class="question-image">
+
+        <!--Display options for the guess -->
+       <form id="guess-form" action="/guess" method="POST">
+        <div>
+           {% for option in options %}
+               <label class="option">
+                   <input type="radio" name="selected_option" value="{{ option }}"> {{ option }}<br>
+               </label>
+           {% endfor %}
+           <input type="hidden" name="correct_category" value="{{ correct_category }}">
+           <input type="hidden" name="predicted_category" value="{{ predicted_category }}">
+           <input type="hidden" name="correct_count" value="{{ correct_count }}"> 
+           <input type="hidden" name="shown_images" value="{{shown_images}}">
+           <input type="hidden" name="session['shown_images']" value="{{session['shown_images']}}">
+           <input type="hidden" name="question_number" value="{{ question_number }}">
+
+           <button   role="button">Submit Guess</button>
+       </form>
+    <div id="feedback" style=" font-family: 'Montserrat', sans-serif;"></div>
+    <script>
+            document.getElementById("guess-form").addEventListener("submit", function(event) {
+                event.preventDefault();
+                var formData = new FormData(this);
+                fetch("/guess", { method: "POST", body: formData })
+                .then(response => response.json())
+                .then(data => {
+                    var feedbackElement = document.getElementById("feedback");
+                    feedbackElement.innerText = data.feedback;
+                    if (data.feedback === "Correct!") {
+                        feedbackElement.classList.add("feedback-animation", "correct-animation");
+                    } else {
+                        feedbackElement.classList.add("feedback-animation", "incorrect-animation");
+                    }
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 250);
+                });
+            });
+        function guessCategory(selectedOption) {
+            var selectedImage = document.getElementById("random-image").src;
+            // Send selected option and image filename to backend
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/guess", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    // Update UI with feedback
+                    document.getElementById("feedback").innerText = response.feedback;
+                }
+            };
+            xhr.send(JSON.stringify({selected_option: selectedOption, selected_image: selectedImage}));
+        }
+        
+
+
+        
+        
+
+
+
+        
+
+        
+
+
+       
+    </script>
+</body>
+</html><!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="quiz">
+            <div class="quiz_header">
+                <div class="quiz_user">
+                    <h4>Image Guessing Game <span class="name"></span></h4>
+                </div>
+            </div>
+
+             Quiz body 
+            <div class="quiz_body">
+                 Display the random image
+                <img src="{{ url_for('static', filename='examds/' + image_to_show) }}" alt="Random Image" class="question-image">
+
+                 Display options for the guess 
+                <form action="/guess" method="POST">
+                    {% for option in options %}
+                        <label class="option">
+                            <input type="radio" name="selected_option" value="{{ option }}"> {{ option }}
+                        </label>
+                    {% endfor %}
+                    <input type="hidden" name="correct_category" value="{{ correct_category }}">
+                    <input type="hidden" name="predicted_category" value="{{ predicted_category }}">
+                    <input type="hidden" name="correct_count" value="{{ correct_count }}"> 
+                    <input type="hidden" name="shown_images" value="{{shown_images}}">
+                    <input type="hidden" name="session['shown_images']" value="{{session['shown_images']}}">
+                    <input type="submit" value="Submit Guess" class="btn-nextt">
+                </form>
+
+                Next button
+                <form action="/" method="get">
+                    <input type="submit" value="Next" class="btn-next">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+    
+</body>
+
+<style>*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;   
+   }
+   
+   body{
+       background-image: url(pic.jpg);
+       background-position: center;
+       background-size: cover;
+       height: 130vh;
+       font-family: sans-serif;
+   }
+   
+   .wrapper{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       width: 100vw;
+       height: 100vh;
+       
+   }
+   
+   .quiz{
+       display: grid;
+       grid-template-rows: 60px auto;
+       width: 600px;
+       height: 500px;
+       border-radius: 50px;
+   }
+   
+   .quiz_header{
+       display: flex;
+       justify-content: space-between;
+       border-bottom-left-radius: 3px;
+       border-bottom-right-radius: 3px;
+       background-color: #fff;
+       box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.1);
+       z-index: 1;
+   }
+   
+   .quiz_user{
+       display: flex;
+       align-items: center;
+       height: 100%;
+       padding-left: 30px;
+   }
+   
+   .quiz_body{
+       padding: 20px 30px;
+       background-color: skyblue;
+       
+   }
+   
+   .option_group{
+       list-style-type: none;
+       margin: 30px 0;
+   }
+   
+   .option{
+       display: block;
+       width: 300px;
+       background-color: #fff;
+       margin-bottom: 20px;
+       padding: 15px 20px;
+       border-radius: 50px;
+       border: 2px solid transparent;
+       transition: 0.4s all;
+   }
+   
+   .option:hover{
+       cursor: pointer;
+       border: 2px solid #341f97;
+       color: #341f97;
+   }
+   
+   .option.active{
+       background-color: #341f97;
+       color: #fff;
+   }
+  
+   .btn-nextt{
+    border: none;
+    padding: 15px 35px;
+    background-color: #30d44b;
+    color: #fff;
+    border-radius: 50px;
+    transition: 0.4s all;
+  }
+   
+   .btn-next{
+       border: none;
+       padding: 15px 35px;
+       background-color: #341f97;
+       color: #fff;
+       border-radius: 50px;
+       transition: 0.4s all;
+   }
+   
+   .btn-next:hover{
+       cursor: pointer;
+       background-color: greenyellow;
+       color: #000;
+   }
+   
+   .award_icon{
+       display: block;
+       font-size: 300px;
+       color: #fff;
+   }
+   
+   .username, .userpoints{
+       color: #fff;
+       text-align: center;
+       margin-top: 15px;
+   }
+   
+   .border{
+       height: 500px;
+       width: 500px;
+       display: block;
+       justify-content: center;
+       margin: 0px 400px;
+       border-radius: 10px;
+       top: 100px;
+       border-color: transparent;
+   }
+   
+   
+   /* CSS for styling the image */
+   .question-image {
+       width: 300px;
+       height: auto; 
+       margin-bottom: 10px;
+       margin-top: 10px;
+       border-radius: 10px; 
+       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+   }</style>
+   <script>function guessCategory(selectedOption) {
+    var selectedImage = document.getElementById("random-image").src;
+    // Send selected option and image filename to backend
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/guess", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            // Update UI with feedback
+            document.getElementById("feedback").innerText = response.feedback;
+        }
+    };
+    xhr.send(JSON.stringify({selected_option: selectedOption, selected_image: selectedImage}));
+  }
+  
+
+
+let questions = [
+  
+
+    {
+      id: 1,
+      question: "Select the correct option" ,
+      answer:"Apple",
+     
+    },
+    {
+        id: 2,
+        question: "Select the correct option", 
+        answer: "Orange", 
+        
+      },
+      {
+        id: 3,
+        question: "Select the correct option", 
+        answer: "Sunflower", 
+        
+      },
+      {
+        id: 4,
+        question: "Select the correct option", 
+        answer: "Mango", 
+        
+      },
+      {
+        id: 5,
+        question: "Select the correct option",
+        answer: "rose", 
+        
+      },
+      {
+        id: 6,
+        question: "Select the correct option",
+        answer: "Lotus",
+        
+      },
+      {
+        id: 7,
+        question: "Select the correct option",
+        answer: "Eggplant", 
+        
+      },
+      {
+        id: 8,
+        question: "Select the correct option",
+        answer: "Banana", 
+        
+      },
+      {
+        id: 9,
+        question: "Select the correct option", 
+        answer: "Daisy", 
+        
+          
+        
+      },
+      {
+        id: 10,
+        question: "Select the correct option",
+        answer: "Marigold", 
+        
+        
+      },
+];
+
+let question_count = 0;
+let points = 0;
+
+
+window.onload = function(){
+    show(question_count);
+};
+
+// function show(count){
+//     let question = document.getElementById("questions");
+//     let[first, second, third, fourth] = questions[count].options;
+   
+
+//     question.innerHTML = `<h2>Q${count + 1}. ${questions[count].question}</h2>
+//     <ul class="option_group">
+//     <li class="option">${first}</li>
+//     <li class="option">${second}</li>
+//     <li class="option">${third}</li>
+//     <li class="option">${fourth}</li>
+//     </ul>`;
+//     toggleActive();  
+// }
+
+
+
+function show(count) {
+
+  let question = document.getElementById("questions");
+  let[first, second, third, fourth] = questions[count].options;
+  let imagePath = questions[count].image;
+  let randomImageIndex = Math.floor(Math.random() * imageUrls.length);
+  let randomImageUrl = imageUrls[randomImageIndex];
+
+  question.innerHTML = `
+  <h2>Q${count + 1}. ${questions[count].question}</h2>
+  <img src="${imagePath}" alt="Question Image" class="question-image">  Add class for styling 
+  <ul class="option_group">
+      <li class="option">${first}</li>
+      <li class="option">${second}</li>
+      <li class="option">${third}</li>
+      <li class="option">${fourth}</li>
+  </ul>`;
+  toggleActive();  
+}
+
+
+
+function toggleActive(){
+    let option = document.querySelectorAll("li.option");
+    for(let i=0; i < option.length; i++){
+        option[i].onclick = function(){
+            for(let i=0; i < option.length; i++){
+                if(option[i].classList.contains("active")){
+                    option[i].classList.remove("active");
+                }
+            }
+            option[i].classList.add("active");
+        }
+    }
+}
+
+function next(){
+
+    if(question_count == questions.length -1){
+        location.href = "final.html";
+    }
+    console.log(question_count);
+
+
+let user_answer = document.querySelector("li.option.active").innerHTML;
+
+if(user_answer == questions[question_count].answer){
+    points += 10;
+    sessionStorage.setItem("points",points);
+}
+console.log(points);
+
+question_count++;
+show(question_count);
+}
+
+let user_points = sessionStorage.getItem("points");
+
+document.querySelector("span.name").innerHTML = user_name;
+document.querySelector("span.points").innerHTML = user_points;
+</script>
+</html>
+<body>
+    <h1>Image Guessing Game</h1>
+     Display the random image -->
+    <!--<img src="{{ url_for('static', filename='examds/' + image_to_show) }}" alt="Random Image">
+
+     Display options for the guess 
+    <form action="/guess" method="POST">
+        {% for option in options %}
+            <input type="radio" name="selected_option" value="{{ option }}"> {{ option }}<br>
+        {% endfor %}
+        <input type="hidden" name="correct_category" value="{{ correct_category }}">
+        <input type="hidden" name="predicted_category" value="{{ predicted_category }}">
+        <input type="hidden" name="correct_count" value="{{ correct_count }}"> 
+        <input type="hidden" name="shown_images" value="{{shown_images}}">
+        <input type="hidden" name="session['shown_images']" value="{{session['shown_images']}}">
+        <input type="submit" value="Submit Guess">
+        
+        
+    </form>
+
+     Next button 
+    <form action="/" method="get">
+        <input type="submit" value="Next">
+        
+    </form>
+
+     JavaScript script tag (if needed)
+    <script src="{{ url_for('static', filename='frontend.js') }}"></script>
+</body>
+-->

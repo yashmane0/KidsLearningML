@@ -1,0 +1,100 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.heading{
+    height: 60px;
+    text-align: center;
+    background-color: #9b6d6d;
+    color: white;
+    line-height: 3rem;
+}
+
+
+.nav{
+    height: 590px;
+    background-color: #501c1c;
+    background-image: url("bg-img-learn.jpg");
+    background-size: cover;
+    
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+   
+    font-size: 4rem;
+    font-weight: 700;
+    font-family:  Arial, sans-serif;
+    text-align: center;
+   
+}
+
+.fruit{
+    height: 100px;
+    width: 300px;
+    border-radius: 1.50rem;
+    /* background-image: url("Fruits.png"); */
+    background-color: yellow;
+    border: 0.5rem solid white;
+    background-size: cover;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(2, 2, 153);
+    
+}
+
+.fruit:hover{
+    opacity: 0.8;
+}
+
+ .fruit a{
+    text-decoration: none;
+ }
+
+.flower{
+    height: 100px;
+    width: 300px;
+    /* background-image: url("flower.png"); */
+    background-color: yellow;
+    border: 0.5rem solid white;
+    background-size:contain;
+    background-repeat: no-repeat;
+    border-radius: 1.50rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flower:hover{
+    opacity: 0.8;
+}
+
+.flower a{
+    text-decoration: none;
+    
+}
+
+.vegetables{
+    height: 100px;
+    width: 370px;
+    /* background-image: url("flower.png"); */
+    background-color: yellow;
+    border: 0.5rem solid white;
+    background-size:contain;
+    background-repeat: no-repeat;
+    border-radius: 1.50rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.vegetables:hover{
+    opacity: 0.8;
+}
+
+.vegetables a{
+    text-decoration: none;
+}

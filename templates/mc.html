@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Memory Card Game</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/mcstyle.css') }}">
+  </head>
+  <body>
+    <h1>Memory Cards</h1>
+  </br>
+
+    <div class="grid-container">
+    </div>
+    <p>Attempts :<span class="score"></span></p>
+    <div class="actions">
+        <button onclick="restart()">Restart</button>
+    </div>
+    <script src="{{ url_for('static', filename='javascript/index.js') }}"></script>
+  </body>
+</html>

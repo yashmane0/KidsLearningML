@@ -1,0 +1,74 @@
+[
+    {
+        "image": "/static/assets/chili.png",
+        "name": "chili"
+    },
+    {
+        "image": "/static/assets/grapes.png",
+        "name": "grapes"
+    },
+    {
+        "image": "/static/assets/lemon.png",
+        "name": "lemon"
+    },
+    {
+        "image": "/static/assets/orange.png",
+        "name": "orange"
+    },
+    {
+        "image": "/static/assets/pineapple.png",
+        "name": "pineapple"
+    },
+    {
+        "image": "/static/assets/strawberry.png",
+        "name": "strawberry"
+    },
+    {
+        "image": "/static/assets/tomato.png",
+        "name": "tomato"
+    },
+    {
+        "image": "/static/assets/watermelon.png",
+        "name": "watermelon"
+    },
+    {
+        "image": "/static/assets/cherries.png",
+        "name": "cherries"
+    },
+    {
+        "image": "/static/assets/rose.png",
+        "name": "rose"
+    },
+    {
+        "image": "/static/assets/tulip.png",
+        "name": "tulip"
+    },
+    {
+        "image": "/static/assets/daisy.png",
+        "name": "daisy"
+    },
+    {
+        "image": "/static/assets/dafodil.png",
+        "name": "dafodil"
+    },
+    {
+        "image": "/static/assets/lotus.png",
+        "name": "lotus"
+    },
+    {
+        "image": "/static/assets/jasmine.jpeg",
+        "name": "jasmine"
+    },
+    {
+        "image": "/static/assets/lily.png",
+        "name": "lily"
+    },
+    {
+        "image": "/static/assets/sunflower.png",
+        "name": "sunflower"
+    },
+    {
+        "image": "/static/assets/marigold.jpeg",
+        "name": "marigold"
+    }
+]

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower's</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/flower.css') }}">
+</head>
+<body class="bd" id="bd">
+    <div class="background-img">
+        <div class="container">
+            <div class=" div">
+                <span>F</span>
+                <span>l</span>
+                <span>o</span>
+                <span>w</span>
+                <span>e</span>
+                <span>r</span>
+                
+                <span >C</span>
+                <span>l</span>
+                <span>a</span>
+                <span>s</span>
+                <span>s</span>
+                <span>i</span>
+                <span>f</span>
+                <span>i</span>
+                <span>c</span>
+                <span>a</span>
+                <span>t</span>
+                <span>i</span>
+                <span>o</span>
+                <span>n</span>
+                
+            </div>
+        <!-- <img src="flower.png" alt=""> 
+        <img src="background-image: url('flower.png');" id="img1" alt="">
+        <div class="container">
+        <div class="heading">
+            <h1>Fruit's, Flower's and Vegetable's Classification </h1>
+            <button id="btn" onclick="show()">Go Back</button>-->
+        </div>
+    </div>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+
+    <div class="bg-img" style="background-image: url('bg-img-learn.jpg'); background-size: cover; height: 100%; width: 100%;" >
+
+    <div class="nav2" id="nav2">
+        <div class="box" id="box1" onmouseenter="speak('rose')" >  
+            <!--  onmouseleave="leave('leave')"  -->
+            <img src="{{ url_for('static', filename='images/rose.jpeg') }}" alt="">
+            <h2><a onclick="window.location.href='/rose.html'">Rose</a></h2>
+            <!-- <div class="select-box" >
+                <div class="img1" style="background-image: url('/images\apple.jpeg');">
+                    <img src="images\apple.jpeg" alt="">
+                    <h2>Apple</h2></div>
+                </div> -->
+            </div>
+
+            <div class="box" id="box2" onmouseenter="speak('tulip')">
+            <img src="{{ url_for('static', filename='images/tulip.jpeg') }}" alt="">
+            <h2><a onclick="window.location.href='/tulip.html'">Tulip</a></h2>
+            <!-- <div class="img1" style="background-image: url('images\apple.jpeg');">
+                <div class="select-box" >
+                </div>
+            </div> -->
+        </div>
+
+
+
+        <div class="box" id="box3" onmouseenter="speak('daisy')">
+            <img src="{{ url_for('static', filename='images/daisy.jpeg') }}" alt="">
+            <h2><a onclick="window.location.href='/daisy.html'">Daisy</a></h2>
+            <!-- <div class="select-box" >
+                <div class="img1" style="background-image: url('/images/apple.jpeg');"></div>
+            </div> -->
+        </div>
+        
+        <div class="box" id="box4" onmouseenter="speak('sunflower')">
+            <img src="{{ url_for('static', filename='images/sunflower.jpeg') }}" alt="">
+            <h2><a onclick="window.location.href='/sunflower.html'">Sunflower</a></h2>
+            <!-- <div class="select-box" >
+                <div class="img1" style="background-image: url('/images/apple.jpeg');"></div>
+            </div> -->
+        </div>
+
+        <div class="box" id="box5" onmouseenter="speak('daffodil')">
+            <img src="{{ url_for('static', filename='images/daffodil.jpg') }}" alt="">
+            <h2><a onclick="window.location.href='/daffodil.html'">Daffodil</a></h2>
+            <!-- <div class="select-box" >
+                <div class="img1" style="background-image: url('/images/apple.jpeg');"></div>
+            </div> -->
+        </div>
+        <div class="box" id="box6" onmouseenter="speak('Jasmine')">
+            <img src="{{ url_for('static', filename='images/jasmine flower.jpg') }}" alt="">
+            <h2><a onclick="window.location.href='/jasmin.html'">Jasmine</a></h2>
+            <!-- <div class="select-box" >
+                <div class="img1" style="background-image: url('/images/apple.jpeg');"></div>
+            </div> -->
+        </div>
+        <div class="box" id="box7" onmouseenter="speak('lotus')">
+            <img src="{{ url_for('static', filename='images/lotus.jpg') }}" alt="">
+            <h2><a onclick="window.location.href='/lotus.html'">Lotus</a></h2>
+            <!-- <div class="select-box" >
+                <div class="img1" style="background-image: url('/images/apple.jpeg');"></div>
+            </div> -->
+        </div>
+         <div class="box" id="box8" onmouseenter="speak('lilies')">
+            <img src="{{ url_for('static', filename='images/lilies.jpg') }}" alt="">
+            <h2><a onclick="window.location.href='/lily.html'">Lilies</a></h2>
+            <!-- <div class="select-box" >
+                <div class="img1" style="background-image: url('/images/apple.jpeg');"></div>
+            </div> -->
+        </div>
+
+        <div class="box" id="box9" onmouseenter="speak('marigold')">
+            <img src="{{ url_for('static', filename='images/marigold.jpeg') }}" alt="">
+            <h2><a onclick="window.location.href='/marigold.html'">Marigold</a></h2>
+            <!-- <div class="select-box" >
+                <div class="img1" style="background-image: url('/images/apple.jpeg');"></div>
+            </div> -->
+        </div>
+        
+    </div>
+    </div>
+</div>
+    
+    <script src="{{ url_for('static', filename='javascript/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='javascript/speak.js') }}"></script>
+    <script src="{{ url_for('static', filename='javascript/flower.js') }}"></script>
+</body>
+</html>

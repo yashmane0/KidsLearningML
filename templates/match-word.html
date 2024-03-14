@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match the Word to the Picture</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/match-word.css') }}">
+</head>
+<body>
+
+
+    <div class="feedback" id="feedback"></div>
+
+    <div class="box">
+        
+    
+    <div class="container">
+        <div class="navv">
+
+            <div class="nav">
+                <h4>Match Words With The Correct Pictures</h4>
+            </div>
+        </div>
+
+        <div class="wp">
+
+       
+        <div class="word-list">
+            <div class="word" data-word="Apple">Apple</div>
+            <div class="word" data-word="Sunflower">Sunflower</div>
+            <div class="word" data-word="Grapes">Grapes</div>
+            <div class="word" data-word="Onion">Onion</div>
+            <div class="word" data-word="Carrot">Carrot</div>
+            <div class="word" data-word="Orange">Orange</div>
+        </div>
+        <div class="picture-list">
+            <img class="picture" src="{{ url_for('static', filename='images/grapes.png') }}" alt="Grapes">
+            <img class="picture" src="{{ url_for('static', filename='images/orange.jpeg') }}" alt="Orange">
+            <img class="picture" src="{{ url_for('static', filename='images/carrot.jpeg') }}" alt="Carrot">
+            <img class="picture" src="{{ url_for('static', filename='images/sunflower.jpeg') }}" alt="Sunflower">
+            <img class="picture" src="{{ url_for('static', filename='images/apple.jpeg') }}" alt="Apple">
+            <img class="picture" src="{{ url_for('static', filename='images/onion.jpg') }}" alt="Onion">
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+  
+
+    <!--<div class="feedback" id="feedback"></div>-->
+
+<script >
+        
+// First
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const words = document.querySelectorAll('.word');
+    const pictures = document.querySelectorAll('.picture');
+    const feedback = document.getElementById('feedback');
+    let selectedWord = null;
+    let selectedPicture = null;
+
+    words.forEach(word => {
+        word.addEventListener('click', () => {
+            if (!word.classList.contains('matched')) {
+                if (selectedWord !== null) {
+                    selectedWord.classList.remove('selected');
+                }
+                selectedWord = word;
+                word.classList.add('selected');
+                checkMatch();
+            } else {
+                feedback.textContent = 'This word has already been matched.';
+            }
+        });
+    });
+
+    pictures.forEach(picture => {
+        picture.addEventListener('click', () => {
+            if (!picture.classList.contains('matched')) {
+                if (selectedPicture !== null) {
+                    selectedPicture.classList.remove('selected');
+                }
+                selectedPicture = picture;
+                picture.classList.add('selected');
+                checkMatch();
+            } else {
+                feedback.textContent = 'This picture has already been matched.';
+            }
+        });
+    });
+
+    function checkMatch() {
+        if (selectedWord && selectedPicture) {
+            const wordText = selectedWord.dataset.word;
+            const pictureAlt = selectedPicture.alt;
+
+            if (wordText === pictureAlt) {
+                feedback.innerHTML = '<i class="fas fa-check-circle correct"></i> Correct! You matched the word and picture';
+                selectedWord.classList.add('matched');
+                selectedPicture.classList.add('matched');
+                feedback.classList.add('correct');
+            } else {
+                feedback.innerHTML = '<i class="fas fa-times-circle wrong"></i> Wrong! The word and picture do not match';
+                feedback.classList.add('wrong');
+            }
+
+            selectedWord = null;
+            selectedPicture = null;
+        }
+    }
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match the Word to the Picture</title>
+    <link rel="stylesheet" href="match-word.css">
+</head>
+<body>
+<div id="gameSection">
+    <div class="feedback-container">
+        <div class="feedback" id="feedback"></div>
+    </div>
+    <div class="box">
+        <div class="container">
+            <div class="navv">
+                <div class="nav">
+                    <h4>Match Words With The Correct Pictures</h4>
+                </div>
+            </div>
+            <div class="wp">
+                <div class="word-list">
+                   
+                </div>
+                <div class="picture-list">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="scoreSection" style="display:none;">
+    <h2>Score and Rewards</h2>
+    <div id="score"></div>
+    <div id="rewards"></div>
+</div>
+
+<script src="match-word.js"></script>
+</body>
+</html>
+ -->

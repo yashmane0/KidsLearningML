@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Childrens Learning </title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+    
+<!-- partial:index.partial.html -->
+<div id="menu">
+		<div class="hamburger">
+			<div class="line"></div>
+			<div class="line"></div>
+			<div class="line"></div>
+		</div>
+		<div class="menu-inner">
+			
+			<ul>
+				<li class = "topic" >Learn</li>
+				<li class="subtopic"><a  id="fruit">Fruit</a></li>
+				<li class="subtopic"><a id="flower">Flower</a></li>
+				<li class="subtopic"><a id="vegetables">Vegetable</a></li>
+				<li class="topic">Play</li>
+				<li class="subtopic"><a id="mc">Memory Card</a></li>
+				<li class="subtopic">Spot Object</li>
+				<li class="subtopic"></li>
+				
+			</ul>
+		</div>
+  
+  
+		
+		
+	</div>
+
+<div id="open">
+	
+</div>
+
+<!-- partial -->
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+
+
+  <script>
+    $(document).ready(function () {
+        $("#fruit").click(function (e) {
+            e.preventDefault();
+            // Load content from fruit.html into #open
+            $("#open").load("fruit.html");
+        });
+    });
+
+	$(document).ready(function () {
+        $("#flower").click(function (e) {
+            e.preventDefault();
+            // Load content from fruit.html into #open
+            $("#open").load("flower.html");
+        });
+    });
+
+	$(document).ready(function () {
+        $("#vegetables").click(function (e) {
+            e.preventDefault();
+            // Load content from fruit.html into #open
+            $("#open").load("vegetables.html");
+        });
+    });
+
+    $(document).ready(function () {
+        $("#mc").click(function (e) {
+            e.preventDefault();
+            // Load content from fruit.html into #open
+            $("#open").load("mc.html");
+        });
+    });
+</script>
+</body>
+</html>

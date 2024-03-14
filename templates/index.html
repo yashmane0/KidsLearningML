@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Childrens Learning </title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+<body>
+<div class="txt" id="txt">
+    <b>W</b><b>E</b><b>L</b><b>C</b><b>O</b><b>M</b><b>E</b><b>!</b></br><b> K</b><b>I</b><b>D</b><b>S</b>
+</div>
+<!-- partial:index.partial.html -->
+<div id="menu">
+		<div class="hamburger">
+			<div class="line"></div>
+			<div class="line"></div>
+			<div class="line"></div>
+		</div>
+		<div class="menu-inner">    
+			
+			<ul>
+				<li class = "topic" >Learn</li>
+				<li class="subtopic"><a  onclick="window.location.href='/fruit.html'">Fruit</a></li>
+				<li class="subtopic"><a  onclick="window.location.href='/flower.html'">Flower</a></li>
+				<li class="subtopic"><a onclick="window.location.href='/vegetables.html'">Vegetable</a></li>
+				<li class="topic">Play</li>
+				<li class="subtopic"><a onclick="window.location.href='/mc.html'">Memory Card</a></li>
+				<li class="subtopic"><a onclick="window.location.href='/frontend.html'">Guess </a></li>
+				<li class="subtopic"><a onclick="window.location.href='/match-word.html'">Match </a></li>
+				
+			</ul>
+		</div>
+  
+  
+		
+		
+	</div>
+
+<div id="open">
+	
+</div>
+
+<!-- partial -->
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script src="{{ url_for('static', filename='javascript/script.js') }}"></script>
+
+
+  
+
+</script>
+</body>
+</html>
+   
