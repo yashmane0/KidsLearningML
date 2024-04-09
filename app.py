@@ -1,18 +1,24 @@
-from flask import Flask, render_template, request, jsonify, session
+
+from flask import Flask, redirect, render_template, request, jsonify, session
 import os
 import random
 import tensorflow as tf
 from tensorflow.keras.preprocessing import image
-import numpy as np
+import numpy as np  
 import json
 
 app = Flask(__name__)
 app.secret_key = '0256d206d436a7adbeb9c0f28fb16a34'
 
+UPLOAD_FOLDER = 'D:/KidsLearningML/uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 IMAGE_FOLDER = 'D:/KidsLearningML/static/examds'
 CATEGORIES = ['apple', 'banana', 'bean', 'cabbage', 'carrot', 'cucumber', 'daisy', 'mango', 'orange', 'papaya', 'potato', 'rose', 'sunflower', 'tomato', 'tulip', 'watermelon']
 
-model = tf.keras.models.load_model('D:/KidsLearningML/final_saved_model.h5')
+model = tf.keras.models.load_model('final_model.h5')
+
+
 image_index = 0
 correct_count = 0   
 question_number = 0
@@ -192,7 +198,8 @@ def guess():
     
     selected_option = request.form['selected_option']
     predicted_category = request.form['predicted_category']
-    correct_count = int(request.form['correct_count'])
+    correct_count = int(request.form.getlist('correct_count')[0])
+
     session['shown_images'] = request.form.getlist('shown_images')
     
     if len(session['shown_images']) == len(os.listdir(IMAGE_FOLDER)):
@@ -218,7 +225,29 @@ def predict_category(image_path):
     predicted_category_index = np.argmax(predictions[0])
     return CATEGORIES[predicted_category_index]
 
+# Route to render the upload form
+@app.route('/upload.html')
+def upload_form():
+    return render_template('upload.html')
 
-
+# Route to handle the image upload and prediction
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    if request.method == 'POST':
+        # Check if the post request has the file part
+        if 'file' not in request.files:
+            return jsonify({'error': 'No file part'})
+        file = request.files['file']
+        # If the user does not select a file, the browser submits an empty file without a filename
+        if file.filename == '':
+            return jsonify({'error': 'No selected file'})
+        if file:
+            # Save the uploaded file to the UPLOAD_FOLDER
+            filename = file.filename
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(file_path)
+            # Predict the category of the uploaded image
+            predicted_category = predict_category(file_path)
+            return jsonify({'predicted_category': predicted_category})
 if __name__ == '__main__':
     app.run(debug=True)
