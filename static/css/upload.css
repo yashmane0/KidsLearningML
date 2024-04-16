@@ -1,0 +1,126 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: lightblue;
+    
+}
+
+.container{
+    max-width: 400px;
+    width: 100%;
+    background: #fff;
+    padding: 30px;
+    border-radius: 30px;
+}
+
+.submit{
+    background-color: #ff9f43; /* orange */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 20px; /* round corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* smooth transition */
+}
+.img-area {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    background-color: grey;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   
+}
+
+.img-area img{
+    position: absolute;
+    width: 100%;
+    height: 240px;
+    object-fit: contain;
+    background-size: cover;
+    /* top: 0;
+    left: 0; */
+    object-position: center;
+}
+/* .img-area::before{
+    content: attr(data-img);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 240px;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+} */
+
+
+.img-area .icon{
+    font-size: 100px;
+}
+
+.img-area h2{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+form{
+    display: block;
+    width: 100%;
+    padding: 16px 0;
+    border-radius: 15px;
+    background-color: darkblue;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+#select{
+    font-size: 1rem;
+    color: red;
+    height: 30px;
+    width: 250px;
+    margin-left: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#upload{
+    color: rgb(253, 250, 250);
+    font-size: 1rem;
+    font-weight: bold;
+    background: darkblue;
+    width: 70px;
+    height: 30px;
+    border-radius: 0.3rem;
+    border-color: black;
+    border: 2px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+#upload:hover{
+    background-color: darkblue;
+}
