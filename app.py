@@ -201,7 +201,7 @@ def guess():
     correct_count = int(request.form.getlist('correct_count')[0])
 
     session['shown_images'] = request.form.getlist('shown_images')
-    
+        
     if len(session['shown_images']) == len(os.listdir(IMAGE_FOLDER)):
         total_score = correct_count  # Update total score
         
@@ -248,6 +248,9 @@ def upload_file():
             file.save(file_path)
             # Predict the category of the uploaded image
             predicted_category = predict_category(file_path)
-            return jsonify({'predicted_category': predicted_category})
+            #return jsonify({'predicted_category': predicted_category})
+        
+            return render_template("game_over2.html",predicted_category=predicted_category)
+            
 if __name__ == '__main__':
     app.run(debug=True)

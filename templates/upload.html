@@ -4,12 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Image</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/upload.css') }}">
 </head>
 <body>
-    <h2>Upload Image</h2>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*">
-        <input type="submit" value="Upload">
-    </form>
+    <div class="container">
+        
+        <div class="img-area">
+            <i class='bx bxs-cloud-upload icon'></i>
+            <h2 id="heading">Upload Image</h2>
+            <img >
+        </div>
+        
+        
+        <form action="/upload" method="post" enctype="multipart/form-data">
+           
+           
+           <input id="select" type="file" name="file" accept="image/*"> 
+           <div id="upload"></div>
+           <input class = "submit"  type="submit" value="Submit">
+        </form>
+
+    </div>  
+<script src="{{ url_for('static', filename='javascript/upload.js') }}"></script>
 </body>
 </html>
