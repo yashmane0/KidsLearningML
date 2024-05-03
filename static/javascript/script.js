@@ -10,8 +10,10 @@ $(window).load(function(){
 	
 	blob = $('#blob'),
 	blobPath = $('#blob-path'),
-
+    menu = $('.menu'),
+    menuInner = $('.menu-inner');
 	hamburger = $('.hamburger');
+	
 
 	$(this).on('mousemove', function(e){
 		x = e.pageX;
@@ -19,16 +21,26 @@ $(window).load(function(){
 		y = e.pageY;
 	});
 
-	$('.hamburger, .menu-inner').on('mouseenter', function(){
-		$(this).parent().addClass('expanded');
-		menuExpanded = true;
-	});
+	menuInner.on('mouseenter', function(){
+        $(this).parent().addClass('expanded');
+        menuExpanded = true;
+        checkOverflow(); // Check overflow when menu expands
+        scrollToItem(4); // Scroll to 4th item in the list
+    });
 
-	$('.menu-inner').on('mouseleave', function(){
-		menuExpanded = false;
-		$(this).parent().removeClass('expanded');
-	});
-
+    menuInner.on('mouseleave', function(){
+        menuExpanded = false;
+        $(this).parent().removeClass('expanded');
+    });
+    function checkOverflow() {
+        // Check if menu-inner overflows its parent (.menu)
+        var isOverflowing = menuInner[0].scrollHeight > menuInner.height();
+        if (isOverflowing) {
+            menu.addClass('scrollable-menu');
+        } else {
+            menu.removeClass('scrollable-menu');
+        }
+    }
 	function easeOutExpo(currentIteration, startValue, changeInValue, totalIterations) {
 		return changeInValue * (-Math.pow(2, -10 * currentIteration / totalIterations) + 1) + startValue;
 	}
@@ -79,6 +91,19 @@ $(window).load(function(){
 	}
 
 	window.requestAnimationFrame(svgCurve);
+
+	menuInner.on('wheel', function(e) {
+        e.preventDefault();
+        var delta = e.originalEvent.deltaY;
+        this.scrollTop += (delta < 0 ? -30 : 30);
+    });
+	function scrollToItem(index) {
+        var item = menuInner.find('a').eq(index - 1);
+        if (item.length) {
+            var scrollPos = item.position().top;
+            menuInner.scrollTop(scrollPos);
+        }
+    }	
 	
 });
 

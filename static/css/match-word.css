@@ -5,9 +5,9 @@
    }
 
 body{
-    background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/981777df-1751-44c7-a258-414e678ffc5d/d8u1yc4-54dd6dc5-b00a-470c-b22e-3b79e4471eb4.jpg/v1/fit/w_828,h_528,q_70,strp/game_background_concept_sketch_by_dearcane_d8u1yc4-414w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAxOSIsInBhdGgiOiJcL2ZcLzk4MTc3N2RmLTE3NTEtNDRjNy1hMjU4LTQxNGU2NzhmZmM1ZFwvZDh1MXljNC01NGRkNmRjNS1iMDBhLTQ3MGMtYjIyZS0zYjc5ZTQ0NzFlYjQuanBnIiwid2lkdGgiOiI8PTE2MDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.dTlcoe3G8cmytBCqRLQESbNGVQq-IkGZDYC0UDCxwyc');
-    background-position: center;
-    background-size: cover;
+    background-image: url("bg-img.jpg");
+    background-position:inherit;
+    background-size:cover;
     
     
 }
@@ -54,7 +54,7 @@ body{
     margin-top: 50px;
     height: 1000px;
     width: 900px;
-    background-color: aqua;
+    background-color: rgba(225, 255, 182, 0.559);
     border-radius: 25px;
     position: static;
    

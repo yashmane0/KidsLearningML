@@ -31,7 +31,7 @@ body{
     perspective: 800px;
     position:absolute;
     top: 7%;
-    left:55%;
+    left:48%;
     transform: translate(-50%, -50%);
   }
   
@@ -344,7 +344,7 @@ body{
 
 #box1 img {
     height: 210px;
-    width: 352px;
+    width: 330px;
 }
 
 
@@ -362,7 +362,7 @@ body{
 
 #box2 img {
     height: 210px;
-    width: 352px;
+    width: 330px;
 
     /* margin-left: 30px; */
 }
@@ -383,7 +383,7 @@ body{
 
 #box3 img {
     height: 210px;
-    width: 352px;
+    width: 330px;
 }
 
 
@@ -403,7 +403,7 @@ body{
 
 #box4 img {
     height: 210px;
-    width: 352px;
+    width: 330px;
 }
 
 #box5 {
@@ -422,7 +422,7 @@ body{
 
 #box5 img {
     height: 210px;
-    width: 352px;
+    width: 330px;
 }
 
 #box6 {
@@ -441,7 +441,7 @@ body{
 
 #box6 img {
     height: 210px;
-    width: 352px;
+    width: 330px;
 }
 
 #box7 {
@@ -460,7 +460,7 @@ body{
 
 #box7 img {
     height: 210px;
-    width: 352px;
+    width: 330px;
 }
 
 #box8 {
@@ -479,7 +479,7 @@ body{
 
 #box8 img {
     height: 210px;
-    width: 352px;
+    width: 330px;
 }
 
 #box9 {
@@ -498,7 +498,7 @@ body{
 
 #box9 img {
     height: 210px;
-    width: 352px;
+    width: 330px;
 }
 
 #box10 {
@@ -517,7 +517,7 @@ body{
 
 #box10 img {
     height: 210px;
-    width: 352px;
+    width: 330px;
 }
 
 
@@ -601,7 +601,7 @@ body{
 
 
     height: 260px;
-    width: 23%;
+    width: 10%;
     background-color: rgb(26, 4, 4);
     padding: 20px 0px 15px;
     margin-top: 15px;
@@ -615,6 +615,6 @@ body{
 img {
     height: 210px;
 
-    margin-left: 17px;
+    margin-left: 5px;
 
 }

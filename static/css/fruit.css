@@ -26,7 +26,7 @@
     perspective: 800px;
     position:absolute;
     top: 7%;
-    left:55%;
+    left:50%;
     transform: translate(-50%, -50%);
   }
   
@@ -164,7 +164,7 @@
 
 .box {
     height: 260px;
-    width: 23%;
+    width: 3cqh;
     background-color: rgb(26, 4, 4);
     padding: 20px 0px 15px;
     margin-top: 15px;
@@ -173,7 +173,17 @@
     transition-property: all;
     transition-duration: 1s;
 }
-
+#box1 {
+  height: 260px;
+  width: 23%;
+  background-color: rgb(26, 4, 4);
+  /* padding: 20px 0px 15px; */
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: white;
+  transition-property: all;
+  transition-duration: 1s;
+}
 #box1 img {
     height: 85%;
     width: 90%;
@@ -411,7 +421,7 @@
 
 
     height: 260px;
-    width: 23%;
+    width: 10%;
     background-color: rgb(26, 4, 4);
     padding: 20px 0px 15px;
     margin-top: 15px;
@@ -425,7 +435,7 @@
 img {
     height: 210px;
 
-    margin-left: 17px;
+    margin-left: 5px;
 
 }
 
